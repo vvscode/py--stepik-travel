@@ -1,0 +1,10 @@
+.nav-link.active {
+  font-weight: bold;
+}
+
+.tour-image {
+  max-height: 200px;
+}
+
+.tour-description {
+}

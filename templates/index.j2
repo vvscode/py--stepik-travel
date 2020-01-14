@@ -1,4 +1,6 @@
 {% extends "_base.j2" %} 
+{% import "macros.j2" as macros %}
+
 
 {% block header %}
 <title>Stepik Travel</title>
@@ -19,17 +21,8 @@
 <!-- CARDS -->
 
 <div class="row mt-5" data-test="cards">
-   {% for item in tours %}
-  <div class="col-4" data-test="card">
-    <div class="card mb-3" >
-        <img src="{{ item.picture }}" class="card-img-top img-fluid" data-test="picture">
-        <div class="card-body">
-          <h5 class="card-title">{{ item.title }}</h5>
-        <p class="card-text">{{ item.description }}</p>
-            <a href="/tours/{{ item.id }}/" class="btn btn-sm btn-primary" data-test="tourlink">Подробнее</a>
-        </div>
-    </div>
-  </div>
-  {% endfor %}
+{% for item in tours %}
+  {{ macros.tour_card(item) }}
+{% endfor %}
 </div>
 {% endblock %}

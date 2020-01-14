@@ -4,18 +4,17 @@ import data as data
 
 app = Flask(__name__)
 
+
 @app.route("/")
 def index():
     return render_template(
-        "index.j2",
-        tours=data.get_tours(),
-        menu_departures=data.get_menu_departures(),
+        "index.j2", tours=data.get_tours(), menu_departures=data.get_menu_departures(),
     )
 
 
 @app.route("/from/<direction>/")
 def from_direction(direction):
-    tours=data.get_tours(direction=direction),
+    tours = (data.get_tours(direction=direction),)
 
     if not direction:
         abort(404)
@@ -36,9 +35,7 @@ def tour(tour_id):
         abort(404)
 
     return render_template(
-        "tour.j2",
-        tour=tour,
-        menu_departures=data.get_menu_departures(),
+        "tour.j2", tour=tour, menu_departures=data.get_menu_departures(),
     )
 
 

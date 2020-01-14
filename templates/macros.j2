@@ -1,0 +1,12 @@
+{% macro tour_card(item) -%}
+<div class="col-4" data-test="card">
+  <div class="card mb-3 shadow-lg rounded view overlay zoom" >
+      <img src="{{ item.picture }}" class="card-img-top img-fluid tour-image" data-test="picture">
+      <div class="card-body">
+        <h5 class="card-title">{{ item.title }}</h5>
+        <p class="card-text tour-description">{{ item.description }}</p>
+        <a href="/tours/{{ item.id }}/" class="btn btn-sm btn-primary" data-test="tourlink">Подробнее</a>
+      </div>
+  </div>
+</div>
+{%- endmacro %}
