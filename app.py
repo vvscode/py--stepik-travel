@@ -4,7 +4,6 @@ import data as data
 
 app = Flask(__name__)
 
-
 @app.route("/")
 def index():
     return render_template(
@@ -51,7 +50,3 @@ def page_not_found(error):
         ),
         404,
     )
-
-
-if __name__ == "__main__":
-    app.run()
