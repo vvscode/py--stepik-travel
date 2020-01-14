@@ -1,0 +1,30 @@
+{% extends "_base.j2" %} 
+
+{% block header %}
+<title>Stepik Travel</title>
+{% endblock %} 
+
+{% block content %}
+<h1 class="display-5 mt-4">Летим из <span data-test="from">{{ menu_departures[direction]|replace('Из', '')}}</span></h1>
+<p class="mb-4" >Найдено <span data-test="tourcount">{{ tours|length }}</span> туров, от <span data-test="pricemin">{{(tours|min(attribute='price')).price}}</span> до <span data-test="pricemax">{{(tours|max(attribute='price')).price}}</span> и от <span data-test="nightsmax">{{(tours|min(attribute='nights')).nights}}</span> ночей до <span data-test="nightsmax">{{(tours|max(attribute='price')).nights}}</span> ночей</p>
+<!-- HERO -->
+
+
+
+<!-- CARDS -->
+
+<div class="row mt-5" data-test="cards">
+  {% for item in tours %}
+  <div class="col-4" data-test="card">
+    <div class="card mb-3" >
+        <img src="{{ item.picture }}" class="card-img-top img-fluid" data-test="picture">
+        <div class="card-body">
+          <h5 class="card-title">{{ item.title }}</h5>
+        <p class="card-text">{{ item.description }}</p>
+            <a href="/tours/{{ item.id }}/" class="btn btn-sm btn-primary" data-test="tourlink">Подробнее</a>
+        </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
